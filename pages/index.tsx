@@ -39,11 +39,14 @@ export default function Home() {
         </div>
       </main>
 
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-Q9RYQHJT1P" strategy="afterInteractive"/>
+      <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q9RYQHJT1P" 
+          strategy="afterInteractive"
+      />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-Q9RYQHJT1P');
