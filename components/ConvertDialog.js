@@ -2,11 +2,13 @@
 
 import * as React from 'react'
 import { Button } from '@/components/ui/button'
+import * as Toast from '@radix-ui/react-toast';
 import {
   DialogFooter,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Loader, Frown, CornerDownLeft, Wand } from 'lucide-react'
+// import './styles.css';
 
 
 export function ConvertDialog() {
@@ -14,6 +16,9 @@ export function ConvertDialog() {
   const [data, setData] = React.useState('')
   const [isLoading, setIsLoading] = React.useState(false)
   const [hasError, setHasError] = React.useState(false)
+
+  const [open, setOpen] = React.useState(false);
+  const timerRef = React.useRef(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,9 +51,19 @@ export function ConvertDialog() {
     
   }
 
+  const handleCopy = (e) => {
+    e.preventDefault();
+    setOpen(true);
+    navigator.clipboard.writeText(data?.text)
+  }
+
+  React.useEffect(() => {
+    return () => clearTimeout(timerRef.current);
+  }, []);
+
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="grid gap-4 py-4 text-slate-700">
           <div className="flex gap-4">
             <span className="p-2 h-8 text-white rounded-full text-center flex items-center justify-center" style={{width:'100%'}}>
@@ -98,8 +113,9 @@ export function ConvertDialog() {
             </button>
           </div>
         </div>
+        
         <DialogFooter>
-          <Button type="submit" className="bg-red-500">
+          <Button onClick={handleSubmit} type="submit" className="bg-red-500" style={{zIndex:999}}>
             Transcript
           </Button>
         </DialogFooter>
@@ -112,7 +128,17 @@ export function ConvertDialog() {
           Loading
         </div>
         )}
-        
+
+        <Toast.Provider swipeDirection="right">
+          <Toast.Root className="ToastRoot" open={open} onOpenChange={setOpen}>
+            <Toast.Title className="ToastTitle">Copied to clipboard</Toast.Title>
+            <Toast.Action className="ToastAction" asChild altText="Goto schedule to undo">
+              <button className="Button small green">Close</button>
+            </Toast.Action>
+          </Toast.Root>
+          <Toast.Viewport className="ToastViewport" />
+        </Toast.Provider>
+
         {data && !hasError ? (
           <>
             <div className="flex items-center gap-4 dark:text-white">
@@ -120,6 +146,17 @@ export function ConvertDialog() {
                 <Wand width={18} className="text-white" />
               </span>
               <h3 className="font-semibold">Title : {data?.title}</h3>
+            </div>
+            <div className="grid gap-4 py-4 text-slate-700">
+              <DialogFooter>
+                  <Button 
+                    onClick={handleCopy}
+                    className="bg-red-500" 
+                    style={{zIndex:999}}
+                  >
+                    Copy Text
+                  </Button>
+              </DialogFooter>
             </div>
             <div className='flex' style={{justifyContent:'center'}}>
               <img src={data.image}/>

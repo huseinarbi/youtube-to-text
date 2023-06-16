@@ -36,6 +36,17 @@ export default function Home() {
               Introducing our free tag website tool! With this user-friendly tool, you can easily extract subtitle text from a variety of sources such as YouTube videos, TED Talks, video interviews, educational classes, and more.
         </div>
       </main>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9RYQHJT1P"></script>
+      <script>
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-Q9RYQHJT1P');
+        `}
+      </script>
     </>
   )
 }
