@@ -4,6 +4,8 @@ import styles from '@/styles/Home.module.css'
 import { ConvertDialog } from '@/components/ConvertDialog';
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,8 +39,8 @@ export default function Home() {
         </div>
       </main>
 
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9RYQHJT1P"></script>
-      <script>
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9RYQHJT1P" strategy="afterInteractive"/>
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -46,7 +48,7 @@ export default function Home() {
 
             gtag('config', 'G-Q9RYQHJT1P');
         `}
-      </script>
+      </Script>
     </>
   )
 }
