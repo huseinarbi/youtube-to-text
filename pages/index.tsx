@@ -16,7 +16,7 @@ export default function Home() {
         <title>Youtube to Text</title>
         <meta
           name="description"
-          content="Next.js Template for building OpenAI applications with Supabase."
+          content="Introducing our free tag website tool! With this user-friendly tool, you can easily extract subtitle text from a variety of sources such as YouTube videos, TED Talks, video interviews, educational classes, and more."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
