@@ -26,6 +26,20 @@ export default function Home() {
           <ConvertDialog />
         </div>
 
+        <Script>
+          {`
+            atOptions = {
+              'key' : 'ee2c024e7d2f760d740c90889842bce5',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+            document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitabledisplaynetwork.com/ee2c024e7d2f760d740c90889842bce5/invoke.js"></scr' + 'ipt>');
+          `}
+          
+        </Script>
+
         <div className="py-8 w-full flex items-center justify-center space-x-6">
           <div className="opacity-75 transition hover:opacity-100 cursor-pointer">
             <Link href="https://nextjs.org" className="flex items-center justify-center">
