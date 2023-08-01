@@ -26,7 +26,7 @@ export default function Home() {
           <ConvertDialog />
         </div>
 
-        <Script>
+        <Script id="ads-tera">
           {`
             atOptions = {
               'key' : 'ee2c024e7d2f760d740c90889842bce5',
